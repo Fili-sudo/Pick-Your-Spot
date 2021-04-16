@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PickYourSpot.Controllers.FirstController">
+   <top>
+      <Pane prefHeight="346.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Your Spot">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developed by : Filimon David &amp; Manea Ciprian" underline="true" />
+            <Text layoutX="14.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&#9;This application was made with the thought of simplicity in mind.  We want to &#10;make your life easier through the process of reservation. No phone calls no trouble; &#10;just hop into the app and do it yourself.&#10;&#10;&#9;In order to use this app you need to log in first. Don't worry if u don't have an&#10; account yet.  Just press log in and you will manage from there.&#10;" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+   </top>
+   <bottom>
+      <HBox prefHeight="47.0" prefWidth="600.0" spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#exitButtonClicked" prefHeight="31.0" prefWidth="61.0" text="Exit" />
+            <Region prefHeight="44.0" prefWidth="460.0" />
+            <Button mnemonicParsing="false" onAction="#loginButtonClicked" text="Log in" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>
