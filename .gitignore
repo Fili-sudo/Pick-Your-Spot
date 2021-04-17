@@ -37,5 +37,6 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-.idea
-Pick_Your_Spot.iml
+.idea/*
+
+
