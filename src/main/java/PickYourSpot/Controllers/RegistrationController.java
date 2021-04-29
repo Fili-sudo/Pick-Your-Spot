@@ -36,6 +36,9 @@ public class RegistrationController {
     public static void setWhich(String which) {
         RegistrationController.which = which;
     }
+    public static String getWhich() {
+        return which;
+    }
 
     public static Stage getWindow() {
         return window;
