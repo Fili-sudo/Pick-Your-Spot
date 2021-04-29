@@ -52,6 +52,11 @@ public class SeeMovieListController {
     private Label RatingLabel;
 
 
+    private static Movie movie;
+
+    public static Movie getMovie() {
+        return movie;
+    }
 
 
     @FXML
@@ -77,7 +82,10 @@ public class SeeMovieListController {
         movieTable.setItems(MovieService.getMovieData());
         showMovieDetails(null);
         movieTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showMovieDetails(newValue));
+                (observable, oldValue, newValue) ->{
+                    showMovieDetails(newValue);
+                    movie = newValue;
+                });
     }
 
     private void showMovieDetails(Movie movie){
@@ -103,5 +111,9 @@ public class SeeMovieListController {
         }
     }
 
+    public void PickAMovieButtonClicked() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Timetable.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
 
 }
