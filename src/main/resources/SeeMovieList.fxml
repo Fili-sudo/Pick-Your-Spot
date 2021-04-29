@@ -13,9 +13,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="movieTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="149.0" text="Movie List" />
+                      <TableColumn fx:id="TitluColumn" prefWidth="149.0" text="Movie List" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -35,7 +35,27 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
+                     <children>
+                        <Label text="Titlu" />
+                        <Label fx:id="TitluLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label text="Director" GridPane.rowIndex="1" />
+                        <Label fx:id="DirectorLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="An aparitie" GridPane.rowIndex="2" />
+                        <Label fx:id="an_aparitieLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Gen" GridPane.rowIndex="3" />
+                        <Label fx:id="GenLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Durata" GridPane.rowIndex="4" />
+                        <Label fx:id="DurataLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="People" GridPane.rowIndex="5" />
+                        <Label fx:id="PeopleLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Rating" GridPane.rowIndex="6" />
+                        <Label fx:id="RatingLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     </children>
                   </GridPane>
                   <HBox layoutX="173.0" layoutY="346.0" spacing="8.0">
                      <children>
