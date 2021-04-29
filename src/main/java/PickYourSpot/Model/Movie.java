@@ -1,5 +1,6 @@
 package PickYourSpot.Model;
 
+import javafx.beans.property.*;
 import org.dizitart.no2.objects.Id;
 
 public class Movie {
@@ -8,9 +9,40 @@ public class Movie {
     private int an_aparitie;
     private String director;
     private String people;
-    private float rating;
+    private double rating;
     private String gen;
     private int durata;
+
+    private StringProperty Titlup;
+    private IntegerProperty an_aparitiep;
+    private StringProperty directorp;
+    private StringProperty peoplep;
+    private DoubleProperty ratingp;
+    private StringProperty genp;
+    private IntegerProperty duratap;
+
+
+
+    public Movie(String titlu, int an_aparitie, String director, String people, double rating, String gen, int durata) {
+        Titlu = titlu;
+        this.an_aparitie = an_aparitie;
+        this.director = director;
+        this.people = people;
+        this.rating = rating;
+        this.gen = gen;
+        this.durata = durata;
+
+        Titlup = new SimpleStringProperty(titlu);
+        an_aparitiep = new SimpleIntegerProperty(an_aparitie);
+        directorp = new SimpleStringProperty(director);
+        peoplep = new SimpleStringProperty(people);
+        ratingp = new SimpleDoubleProperty(rating);
+        genp = new SimpleStringProperty(gen);
+        duratap = new SimpleIntegerProperty(durata);
+
+    }
+
+
 
     public String getTitlu() {
         return Titlu;
@@ -44,11 +76,11 @@ public class Movie {
         this.people = people;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -66,5 +98,10 @@ public class Movie {
 
     public void setDurata(int durata) {
         this.durata = durata;
+    }
+
+
+    public StringProperty titlupProperty() {
+        return Titlup;
     }
 }
