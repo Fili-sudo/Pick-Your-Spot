@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="233.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PickYourSpot.Controllers.RolePopUpController">
+   <children>
+      <Label layoutX="56.0" layoutY="90.0" text="Are you an admin or a cinema staff?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="98.0" layoutY="143.0" prefHeight="43.0" prefWidth="201.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#staffButtonClicked" prefHeight="31.0" prefWidth="64.0" text="Staff" />
+            <Region prefHeight="100.0" prefWidth="51.0" />
+            <Button mnemonicParsing="false" onAction="#adminButtonClicked" prefHeight="31.0" prefWidth="64.0" text="Admin" />
+         </children>
+      </HBox>
+   </children>
+</Pane>
