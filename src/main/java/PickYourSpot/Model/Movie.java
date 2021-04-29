@@ -3,6 +3,9 @@ package PickYourSpot.Model;
 import javafx.beans.property.*;
 import org.dizitart.no2.objects.Id;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Movie {
     @Id
     private String Titlu;
@@ -12,6 +15,8 @@ public class Movie {
     private double rating;
     private String gen;
     private int durata;
+
+    private List<Days> timetable = new LinkedList<Days>();
 
     private StringProperty Titlup;
     private IntegerProperty an_aparitiep;
@@ -39,6 +44,14 @@ public class Movie {
         ratingp = new SimpleDoubleProperty(rating);
         genp = new SimpleStringProperty(gen);
         duratap = new SimpleIntegerProperty(durata);
+
+        timetable.add(new Days("Luni"));
+        timetable.add(new Days("Marti"));
+        timetable.add(new Days("Miercuri"));
+        timetable.add(new Days("Joi"));
+        timetable.add(new Days("Vineri"));
+
+
 
     }
 
@@ -104,4 +117,9 @@ public class Movie {
     public StringProperty titlupProperty() {
         return Titlup;
     }
+
+    public List<Days> getTimetable() {
+        return timetable;
+    }
 }
+
