@@ -51,7 +51,7 @@ public class SeeMovieListController {
     @FXML
     private Label RatingLabel;
 
-
+    private static boolean sw=true;
     private static Movie movie;
 
     public static Movie getMovie() {
@@ -78,7 +78,10 @@ public class SeeMovieListController {
             see_res.setVisible(false);
         }
         TitluColumn.setCellValueFactory(cellData -> cellData.getValue().titlupProperty());
-        MovieService.exemplu(); // de sters cand cipri face butoanele
+        if(sw){
+            MovieService.exemplu(); // de sters cand cipri face butoanele
+            sw=false;
+        }
         movieTable.setItems(MovieService.getMovieData());
         showMovieDetails(null);
         movieTable.getSelectionModel().selectedItemProperty().addListener(
