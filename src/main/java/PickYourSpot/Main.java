@@ -1,5 +1,6 @@
 package PickYourSpot;
 
+import PickYourSpot.exceptions.UsernameAlreadyExistsException;
 import PickYourSpot.services.UserService;
 import PickYourSpot.services.FileSystemService;
 import javafx.application.Application;
@@ -33,17 +34,24 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        try {
+            UserService.addUser("admin", "admin", "Admin");
+
+        } catch (UsernameAlreadyExistsException e) { }
+
+
         window = primaryStage;
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("firstpage.fxml")));
         primaryStage.setTitle("Pick Your Spot");
         scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
+
+
 
     private void initDirectory() {
         Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
