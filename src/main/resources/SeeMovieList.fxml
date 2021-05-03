@@ -70,7 +70,7 @@
                         <Button id="see_res" fx:id="see_res" mnemonicParsing="false" text="See reservations" />
                      </children>
                   </VBox>
-                  <Button id="create" fx:id="create" layoutX="211.0" layoutY="307.0" mnemonicParsing="false" text="Create Staff Account" />
+                  <Button id="create" fx:id="create" layoutX="211.0" layoutY="307.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Create Staff Account" />
                </children>
             </AnchorPane>
         </items>

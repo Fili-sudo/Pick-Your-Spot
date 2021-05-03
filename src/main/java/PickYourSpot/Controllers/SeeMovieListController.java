@@ -119,4 +119,9 @@ public class SeeMovieListController {
         Main.getWindow().setScene(new Scene(root, 600, 400));
     }
 
+    public void createButtonClicked() throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("NewStaffAccount.fxml")));
+        Main.getWindow().setScene(new Scene(root, 450, 300));
+    }
+
 }

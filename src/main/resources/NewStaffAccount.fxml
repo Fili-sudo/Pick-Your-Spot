@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PickYourSpot.Controllers.NewStaffAcountController">
    <children>
@@ -27,12 +27,13 @@
             <TextField fx:id="passwordField" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
+                  <Button mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="31.0" prefWidth="112.0" text="Back" />
                   <Region prefHeight="31.0" prefWidth="131.0" />
-                  <Button mnemonicParsing="false" text="Create" />
+                  <Button mnemonicParsing="false" onAction="#handleRegistration" prefHeight="31.0" prefWidth="120.0" text="Create" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="55.0" text="Back" GridPane.rowIndex="2" />
          </children>
       </GridPane>
+      <Text fx:id="createMessage" layoutX="98.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>
