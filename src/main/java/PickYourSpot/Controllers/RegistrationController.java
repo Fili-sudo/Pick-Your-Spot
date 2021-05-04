@@ -92,6 +92,9 @@ public class RegistrationController {
         if(role_string=="Cinema"){
             role_string=which;
         }
+            else{
+                which = "User";
+        }
         if(!UserService.verifyCredentials(usernameField.getText(), passwordField.getText(), role_string)){
             registrationMessage.setText("Incorrect username or password.\n Please reenter your credentials or select the correct role");
         }
