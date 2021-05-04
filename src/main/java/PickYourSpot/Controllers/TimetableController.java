@@ -44,6 +44,16 @@ public class TimetableController {
     @FXML
     private Hyperlink h43;
 
+    private static int i,j;
+
+    public static int getI() {
+        return i;
+    }
+
+    public static int getJ() {
+        return j;
+    }
+
     @FXML
     public void initialize(){
         Movie movie = SeeMovieListController.getMovie();
@@ -68,6 +78,97 @@ public class TimetableController {
 
     public void backButtonClicked() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMovieList.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+
+    public void h01Clicked() throws IOException {
+        i=1;
+        j=0;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h02Clicked() throws IOException {
+        i=2;
+        j=0;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h03Clicked() throws IOException {
+        i=3;
+        j=0;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h11Clicked() throws IOException {
+        i=1;
+        j=1;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h12Clicked() throws IOException {
+        i=2;
+        j=1;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h13Clicked() throws IOException {
+        i=3;
+        j=1;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h21Clicked() throws IOException {
+        i=1;
+        j=2;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h22Clicked() throws IOException {
+        i=2;
+        j=2;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h23Clicked() throws IOException {
+        i=3;
+        j=2;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h31Clicked() throws IOException {
+        i=1;
+        j=3;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h32Clicked() throws IOException {
+        i=2;
+        j=3;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h33Clicked() throws IOException {
+        i=3;
+        j=3;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h41Clicked() throws IOException {
+        i=1;
+        j=4;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h42Clicked() throws IOException {
+        i=2;
+        j=4;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
+    }
+    public void h43Clicked() throws IOException {
+        i=3;
+        j=4;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Theatre.fxml")));
         Main.getWindow().setScene(new Scene(root, 600, 400));
     }
 

@@ -32,21 +32,21 @@
                         <Label text="Miercuri" underline="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
                         <Label text="Joi" underline="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
                         <Label text="Vineri" underline="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
-                        <Hyperlink fx:id="h01" text="Hyperlink" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Hyperlink fx:id="h02" text="Hyperlink" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Hyperlink fx:id="h03" text="Hyperlink" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Hyperlink fx:id="h11" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Hyperlink fx:id="h12" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Hyperlink fx:id="h13" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Hyperlink fx:id="h21" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Hyperlink fx:id="h22" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Hyperlink fx:id="h23" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Hyperlink fx:id="h31" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Hyperlink fx:id="h32" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Hyperlink fx:id="h33" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Hyperlink fx:id="h41" text="Hyperlink" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <Hyperlink fx:id="h42" text="Hyperlink" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Hyperlink fx:id="h43" text="Hyperlink" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Hyperlink fx:id="h01" onAction="#h01Clicked" text="Hyperlink" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Hyperlink fx:id="h02" onAction="#h02Clicked" text="Hyperlink" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Hyperlink fx:id="h03" onAction="#h03Clicked" text="Hyperlink" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Hyperlink fx:id="h11" onAction="#h11Clicked" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Hyperlink fx:id="h12" onAction="#h12Clicked" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Hyperlink fx:id="h13" onAction="#h13Clicked" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Hyperlink fx:id="h21" onAction="#h21Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Hyperlink fx:id="h22" onAction="#h22Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Hyperlink fx:id="h23" onAction="#h23Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Hyperlink fx:id="h31" onAction="#h31Clicked" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Hyperlink fx:id="h32" onAction="#h32Clicked" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Hyperlink fx:id="h33" onAction="#h33Clicked" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Hyperlink fx:id="h41" onAction="#h41Clicked" text="Hyperlink" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Hyperlink fx:id="h42" onAction="#h42Clicked" text="Hyperlink" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Hyperlink fx:id="h43" onAction="#h43Clicked" text="Hyperlink" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>
