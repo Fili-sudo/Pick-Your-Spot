@@ -1,7 +1,10 @@
 package PickYourSpot.services;
 
+import PickYourSpot.Model.Movie;
 import PickYourSpot.Model.Reservation;
 import PickYourSpot.Model.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.dizitart.no2.Cursor;
 import org.dizitart.no2.Document;
 import org.dizitart.no2.Nitrite;
@@ -12,6 +15,11 @@ import static PickYourSpot.services.FileSystemService.getPathToFile;
 public class ReservationService {
 
     private static NitriteCollection collection;
+    private static ObservableList<Reservation> reservationData = FXCollections.observableArrayList();
+
+    public static ObservableList<Reservation> getReservationData() {
+        return reservationData;
+    }
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -39,6 +47,29 @@ public class ReservationService {
         for (Document doc : cursor){
             String movie = doc.get("movieTitle", String.class);
             System.out.println(movie);
+        }
+    }
+    public static void populate(){
+        Cursor cursor = collection.find();
+        for (Document doc : cursor){
+            Reservation res = new Reservation(doc.get("user",String.class),doc.get("movieTitle",String.class)
+            ,doc.get("seats",String.class),doc.get("weekDay",String.class),doc.get("time",String.class)
+            ,doc.get("status",String.class),doc.get("row",int[].class),doc.get("column",int[].class)
+            ,doc.get("res_no",Integer.class));
+            reservationData.add(res);
+        }
+    }
+    public static void populate(String user){
+        Cursor cursor = collection.find();
+        for (Document doc : cursor){
+            String who = doc.get("user",String.class);
+            if (who.equals(user)) {
+                Reservation res = new Reservation(doc.get("user", String.class), doc.get("movieTitle", String.class)
+                        , doc.get("seats", String.class), doc.get("weekDay", String.class), doc.get("time", String.class)
+                        , doc.get("status", String.class), doc.get("row", int[].class), doc.get("column", int[].class)
+                        , doc.get("res_no", Integer.class));
+                reservationData.add(res);
+            }
         }
     }
 
