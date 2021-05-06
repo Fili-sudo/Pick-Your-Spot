@@ -6,8 +6,8 @@ import org.dizitart.no2.objects.Id;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Movie {
-    @Id
+public class Movie implements java.io.Serializable{
+
     private String Titlu;
     private int an_aparitie;
     private String director;

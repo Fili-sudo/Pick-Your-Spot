@@ -32,6 +32,11 @@ public class RegistrationController {
 
     private static Stage window;
     private static String which="User";
+    private static String username;
+
+    public static String getUsername() {
+        return username;
+    }
 
     public static void setWhich(String which) {
         RegistrationController.which = which;
@@ -99,12 +104,13 @@ public class RegistrationController {
             registrationMessage.setText("Incorrect username or password.\n Please reenter your credentials or select the correct role");
         }
             else if (role_string=="User"|| role_string=="Admin"){
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMovieList.fxml")));
-            Main.getWindow().setScene(new Scene(root, 600, 400));
+                username = usernameField.getText();
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMovieList.fxml")));
+                Main.getWindow().setScene(new Scene(root, 600, 400));
         }
             else{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMadeReservations.fxml")));
-            Main.getWindow().setScene(new Scene(root, 600, 400));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMadeReservations.fxml")));
+                Main.getWindow().setScene(new Scene(root, 600, 400));
         }
 
     }
