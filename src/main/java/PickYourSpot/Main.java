@@ -1,6 +1,7 @@
 package PickYourSpot;
 
 import PickYourSpot.exceptions.UsernameAlreadyExistsException;
+import PickYourSpot.services.ReservationService;
 import PickYourSpot.services.UserService;
 import PickYourSpot.services.FileSystemService;
 import javafx.application.Application;
@@ -37,6 +38,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        ReservationService.initDatabase();
         try {
             UserService.addUser("admin", "admin", "Admin");
 
