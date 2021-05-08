@@ -93,7 +93,7 @@ public class SeeMovieListController {
 
     private void showMovieDetails(Movie movie){
         if (movie != null) {
-            // Fill the labels with info from the person object.
+            // Fill the labels with info from the movie object.
             TitluLabel.setText(movie.getTitlu());
             DirectorLabel.setText(movie.getDirector());
             an_aparitieLabel.setText(String.valueOf(movie.getAn_aparitie()));
@@ -103,7 +103,7 @@ public class SeeMovieListController {
             RatingLabel.setText(Double.toString(movie.getRating()));
 
         } else {
-            // Person is null, remove all the text.
+            // movie is null, remove all the text.
             TitluLabel.setText("");
             DirectorLabel.setText("");
             an_aparitieLabel.setText("");
@@ -122,6 +122,10 @@ public class SeeMovieListController {
     public void createButtonClicked() throws IOException{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("NewStaffAccount.fxml")));
         Main.getWindow().setScene(new Scene(root, 450, 300));
+    }
+    public void seeReservationsButtonClicked() throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MyReservations.fxml")));
+        Main.getWindow().setScene(new Scene(root, 600, 400));
     }
 
 }
