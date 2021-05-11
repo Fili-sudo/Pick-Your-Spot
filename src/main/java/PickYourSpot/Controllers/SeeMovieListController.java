@@ -3,6 +3,7 @@ package PickYourSpot.Controllers;
 import PickYourSpot.Main;
 import PickYourSpot.Model.Movie;
 import PickYourSpot.services.MovieService;
+import PickYourSpot.services.ReservationService;
 import javafx.application.Platform;
 import java.io.IOException;
 import java.util.Objects;
@@ -79,7 +80,8 @@ public class SeeMovieListController {
         }
         TitluColumn.setCellValueFactory(cellData -> cellData.getValue().titlupProperty());
         if(sw){
-            MovieService.exemplu(); // de sters cand cipri face butoanele
+            // de sters cand cipri face butoanele
+            MovieService.populate();
             sw=false;
         }
         movieTable.setItems(MovieService.getMovieData());
@@ -124,6 +126,8 @@ public class SeeMovieListController {
         Main.getWindow().setScene(new Scene(root, 450, 300));
     }
     public void seeReservationsButtonClicked() throws IOException{
+        ReservationService.getReservationData().removeAll(ReservationService.getReservationData());
+        MyReservationController.setSw(true);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MyReservations.fxml")));
         Main.getWindow().setScene(new Scene(root, 600, 400));
     }

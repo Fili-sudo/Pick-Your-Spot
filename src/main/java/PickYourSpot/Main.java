@@ -1,9 +1,7 @@
 package PickYourSpot;
 
 import PickYourSpot.exceptions.UsernameAlreadyExistsException;
-import PickYourSpot.services.ReservationService;
-import PickYourSpot.services.UserService;
-import PickYourSpot.services.FileSystemService;
+import PickYourSpot.services.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,6 +37,8 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         ReservationService.initDatabase();
+        MovieService.initDatabase();
+        LocuriService.initDatabase();
         try {
             UserService.addUser("admin", "admin", "Admin");
 
