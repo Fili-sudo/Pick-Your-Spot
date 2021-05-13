@@ -1,6 +1,6 @@
 package PickYourSpot.Model;
 
-public class representation {
+public class representation implements java.io.Serializable{
     private int ora;
     private int minut;
     private int [][] sala = new int[5][8];

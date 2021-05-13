@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Reservation implements java.io.Serializable{
 
     private String user;
@@ -122,5 +125,21 @@ public class Reservation implements java.io.Serializable{
 
     public void setRes_no(int res_no) {
         this.res_no = res_no;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reservation that = (Reservation) o;
+        return res_no == that.res_no && Objects.equals(user, that.user) && Objects.equals(movieTitle, that.movieTitle) && Objects.equals(seats, that.seats) && Objects.equals(weekDay, that.weekDay) && Objects.equals(time, that.time) && Objects.equals(status, that.status) && Arrays.equals(row, that.row) && Arrays.equals(column, that.column);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(user, movieTitle, seats, weekDay, time, status, res_no);
+        result = 31 * result + Arrays.hashCode(row);
+        result = 31 * result + Arrays.hashCode(column);
+        return result;
     }
 }

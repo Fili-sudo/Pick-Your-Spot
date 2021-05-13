@@ -3,7 +3,7 @@ package PickYourSpot.Model;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Days {
+public class Days implements java.io.Serializable{
     private String week_day;
     private List<representation> program = new LinkedList<representation>();
 
