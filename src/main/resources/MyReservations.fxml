@@ -55,7 +55,7 @@
                      </children>
                   </GridPane>
                   <Button layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
-                  <Button layoutX="238.0" layoutY="327.0" mnemonicParsing="false" text="Cancel &#10;Reservation" />
+                  <Button layoutX="238.0" layoutY="327.0" mnemonicParsing="false" onAction="#cancelReservationButtonClicked" text="Cancel &#10;Reservation" />
                </children>
             </AnchorPane>
         </items>

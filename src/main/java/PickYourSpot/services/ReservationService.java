@@ -9,6 +9,7 @@ import org.dizitart.no2.Cursor;
 import org.dizitart.no2.Document;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
+import org.dizitart.no2.filters.Filters;
 
 import static PickYourSpot.services.FileSystemService.getPathToFile;
 
@@ -73,5 +74,19 @@ public class ReservationService {
         }
     }
 
-
+    public static  void find(Reservation reservation){
+        Cursor cursor = collection.find();
+        for (Document doc : cursor) {
+            Reservation res = new Reservation(doc.get("user", String.class), doc.get("movieTitle", String.class)
+                    , doc.get("seats", String.class), doc.get("weekDay", String.class), doc.get("time", String.class)
+                    , doc.get("status", String.class), doc.get("row", int[].class), doc.get("column", int[].class)
+                    , doc.get("res_no", Integer.class));
+            if (reservation.equals(res)) {
+                reservationData.removeAll(reservationData);
+                doc.put("status", "canceled");
+                collection.update(doc);
+            }
+        }
+    }
+    public static void emptycol() { collection.remove(Filters.ALL);}
 }

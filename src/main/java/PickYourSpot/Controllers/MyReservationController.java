@@ -9,12 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 public class MyReservationController {
 
@@ -40,6 +39,16 @@ public class MyReservationController {
 
     private static boolean sw=true;
 
+    public static void setSw(boolean sw) {
+        MyReservationController.sw = sw;
+    }
+
+    private static Reservation reservation;
+
+    public static Reservation getReservation() {
+        return reservation;
+    }
+
     @FXML
     public void initialize(){
 
@@ -54,6 +63,7 @@ public class MyReservationController {
         reservationTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) ->{
                     showReservationDetails(newValue);
+                    reservation = newValue;
                 });
     }
 
@@ -82,6 +92,23 @@ public class MyReservationController {
         Main.getWindow().setScene(new Scene(root, 600, 400));
     }
 
+    public void cancelReservationButtonClicked(){
+        if(reservation.getStatus().equals("canceled")){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("This reservation has been already canceled");
+            a.show();
+        }
+        else {
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Are you sure you want to cancel your reservation?");
+            Optional<ButtonType> result = a.showAndWait();
+            if (result.get() == ButtonType.OK ) {
+                ReservationService.find(reservation);
+                ReservationService.populate(RegistrationController.getUsername());
+                initialize();
+            }
+        }
+    }
 
 
 }
