@@ -1,8 +1,10 @@
 package PickYourSpot.Controllers;
 
 import PickYourSpot.Main;
+import PickYourSpot.Model.Locuri;
 import PickYourSpot.Model.Movie;
 import PickYourSpot.Model.Reservation;
+import PickYourSpot.services.LocuriService;
 import PickYourSpot.services.ReservationService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -103,6 +105,11 @@ public class ConfirmController {
                 seats.getText(),day.getText(),time.getText(),"pending",TheatreController.getRow(),
                 TheatreController.getColumn(),res);
         ReservationService.addReservation(reservation);
+        Locuri locuri = new Locuri(SeeMovieListController.getMovie().getTitlu(),SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getWeek_day()
+                , SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getOra()
+                ,SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getMinut()
+                ,SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getSala());
+        LocuriService.addLocuri(locuri);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMovieList.fxml")));
         Main.getWindow().setScene(new Scene(root, 600, 400));

@@ -80,7 +80,8 @@ public class SeeMovieListController {
         }
         TitluColumn.setCellValueFactory(cellData -> cellData.getValue().titlupProperty());
         if(sw){
-            MovieService.exemplu(); // de sters cand cipri face butoanele
+            // de sters cand cipri face butoanele
+            MovieService.populate();
             sw=false;
         }
         movieTable.setItems(MovieService.getMovieData());
