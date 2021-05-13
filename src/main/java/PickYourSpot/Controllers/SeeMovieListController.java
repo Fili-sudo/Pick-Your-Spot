@@ -157,10 +157,17 @@ public class SeeMovieListController {
     }
 
     public void deleteButtonClicked(){
-        MovieService.findAndRemove(movie);
-        MovieService.emptyMovieData();
-        sw = true;
-        initialize();
+        if(!ReservationService.isEmpty()){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("There are still reservations for this \n movie. You cannot delete it yet");
+            a.show();
+        }
+        else{
+            MovieService.findAndRemove(movie);
+            MovieService.emptyMovieData();
+            sw = true;
+            initialize();
+        }
     }
 
     public void editButtonClicked() throws IOException {
