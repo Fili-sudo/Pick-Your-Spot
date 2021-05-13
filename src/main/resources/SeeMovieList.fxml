@@ -59,9 +59,9 @@
                   </GridPane>
                   <HBox layoutX="173.0" layoutY="346.0" spacing="8.0">
                      <children>
-                        <Button id="new" fx:id="nnew" mnemonicParsing="false" text="New..." />
-                        <Button id="edit" fx:id="edit" mnemonicParsing="false" text="Edit..." />
-                        <Button id="delete" fx:id="delete" mnemonicParsing="false" text="Delete" />
+                        <Button id="new" fx:id="nnew" mnemonicParsing="false" onAction="#newButtonClicked" text="New..." />
+                        <Button id="edit" fx:id="edit" mnemonicParsing="false" onAction="#editButtonClicked" text="Edit..." />
+                        <Button id="delete" fx:id="delete" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Delete" />
                      </children>
                   </HBox>
                   <VBox layoutX="20.0" layoutY="307.0" prefHeight="77.0" prefWidth="138.0" spacing="10.0">
