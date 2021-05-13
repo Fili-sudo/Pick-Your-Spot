@@ -9,12 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 public class SeeMadeReservationsController {
 
@@ -40,6 +39,7 @@ public class SeeMadeReservationsController {
     @FXML
     private Label statusLabel;
 
+    private static Reservation reservation ;
     private static boolean sw=true;
 
     @FXML
@@ -56,6 +56,7 @@ public class SeeMadeReservationsController {
         reservationTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) ->{
                     showReservationDetails(newValue);
+                    reservation = newValue;
                 });
     }
 
@@ -81,11 +82,41 @@ public class SeeMadeReservationsController {
             statusLabel.setText("");
         }
     }
-    public void backButtonClicked() throws IOException{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMovieList.fxml")));
-        Main.getWindow().setScene(new Scene(root, 600, 400));
+    public void anulleReservationButtonClicked(){
+        if(reservation.getStatus().equals("canceled")){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("This reservation has been already canceled");
+            a.show();
+        }
+        else {
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Are you sure you want to cancel this reservation?");
+            Optional<ButtonType> result = a.showAndWait();
+            if (result.get() == ButtonType.OK ) {
+                ReservationService.find(reservation);
+                ReservationService.populate();
+                initialize();
+            }
+        }
     }
 
+    public void acceptReservationButtonClicked(){
+        if(reservation.getStatus().equals("accepted")){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("This reservation has been already accepted");
+            a.show();
+        }
+        else {
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Are you sure you want to accept this reservation?");
+            Optional<ButtonType> result = a.showAndWait();
+            if (result.get() == ButtonType.OK ) {
+                ReservationService.findAndAccept(reservation);
+                ReservationService.populate();
+                initialize();
+            }
+        }
+    }
 
 
 }

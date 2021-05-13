@@ -88,6 +88,21 @@ public class ReservationService {
             }
         }
     }
+
+    public static  void findAndAccept(Reservation reservation){
+        Cursor cursor = collection.find();
+        for (Document doc : cursor) {
+            Reservation res = new Reservation(doc.get("user", String.class), doc.get("movieTitle", String.class)
+                    , doc.get("seats", String.class), doc.get("weekDay", String.class), doc.get("time", String.class)
+                    , doc.get("status", String.class), doc.get("row", int[].class), doc.get("column", int[].class)
+                    , doc.get("res_no", Integer.class));
+            if (reservation.equals(res)) {
+                reservationData.removeAll(reservationData);
+                doc.put("status", "accepted");
+                collection.update(doc);
+            }
+        }
+    }
     public static void emptycol() { collection.remove(Filters.ALL);}
     public static boolean isEmpty(){
         if(collection.find().size()==0){
