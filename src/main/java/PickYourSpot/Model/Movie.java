@@ -59,12 +59,12 @@ public class Movie implements java.io.Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return Objects.equals(Titlu, movie.Titlu);
+        return an_aparitie == movie.an_aparitie && Double.compare(movie.rating, rating) == 0 && durata == movie.durata && Objects.equals(Titlu, movie.Titlu) && Objects.equals(director, movie.director) && Objects.equals(people, movie.people) && Objects.equals(gen, movie.gen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Titlu);
+        return Objects.hash(Titlu, an_aparitie, director, people, rating, gen, durata);
     }
 
     public String getTitlu() {

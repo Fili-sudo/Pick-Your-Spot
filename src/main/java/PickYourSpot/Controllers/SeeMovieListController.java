@@ -17,6 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class SeeMovieListController {
     @FXML
@@ -52,7 +54,17 @@ public class SeeMovieListController {
     @FXML
     private Label RatingLabel;
 
+    private static Stage window;
+
+    public static Stage getWindow() {
+        return window;
+    }
+
     private static boolean sw=true;
+    public static void setSw(boolean sw) {
+        SeeMovieListController.sw = sw;
+    }
+
     private static Movie movie;
 
     public static Movie getMovie() {
@@ -132,4 +144,34 @@ public class SeeMovieListController {
         Main.getWindow().setScene(new Scene(root, 600, 400));
     }
 
+    public void newButtonClicked () throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("AddMovie.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setX(200);
+        stage.setY(300);
+        window = stage;
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setScene(scene);
+        window.showAndWait();
+    }
+
+    public void deleteButtonClicked(){
+        MovieService.findAndRemove(movie);
+        MovieService.emptyMovieData();
+        sw = true;
+        initialize();
+    }
+
+    public void editButtonClicked() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("EditMovie.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setX(200);
+        stage.setY(300);
+        window = stage;
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setScene(scene);
+        window.showAndWait();
+    }
 }

@@ -50,7 +50,36 @@ public class MovieService {
         }
     }
 
+    public static void findAndUpdate(Movie movie, Movie newMovie) {
+        Cursor cursor = collection.find();
+        for (Document doc : cursor) {
+            Movie mov = new Movie(doc.get("movieTitle", String.class), doc.get("anAparitie", Integer.class)
+                    , doc.get("director", String.class), doc.get("people", String.class), doc.get("rating", Double.class)
+                    , doc.get("gen", String.class), doc.get("durata", Integer.class));
+            if (movie.equals(mov)) {
+                doc.put("movieTitle", newMovie.getTitlu());
+                doc.put("anAparitie", newMovie.getAn_aparitie());
+                doc.put("director", newMovie.getDirector());
+                doc.put("people", newMovie.getPeople());
+                doc.put("rating", newMovie.getRating());
+                doc.put("gen", newMovie.getGen());
+                doc.put("durata", newMovie.getDurata());
+                collection.update(doc);
+            }
+        }
+    }
 
+    public static  void findAndRemove(Movie movie){
+        Cursor cursor = collection.find();
+        for (Document doc : cursor) {
+            Movie mov = new Movie(doc.get("movieTitle", String.class), doc.get("anAparitie", Integer.class)
+                    , doc.get("director", String.class), doc.get("people", String.class), doc.get("rating", Double.class)
+                    , doc.get("gen", String.class), doc.get("durata", Integer.class));
+            if (movie.equals(mov)) {
+               collection.remove(doc);
+            }
+        }
+    }
 
     public static void exemplu(){
        addMovie(new Movie("Demolition Man", 1993, "Marco Brambilla", "Sylvester Stallone, Sandra Bullock",7.3, "Thriller", 110));
@@ -60,5 +89,9 @@ public class MovieService {
     }
     public static void empty(){
         collection.remove(Filters.ALL);
+    }
+
+    public static void emptyMovieData(){
+        movieData.removeAll(movieData);
     }
 }

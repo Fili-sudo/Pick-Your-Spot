@@ -89,4 +89,12 @@ public class ReservationService {
         }
     }
     public static void emptycol() { collection.remove(Filters.ALL);}
+    public static boolean isEmpty(){
+        if(collection.find().size()==0){
+            return true;
+        }
+            else{
+                return false;
+        }
+    }
 }
