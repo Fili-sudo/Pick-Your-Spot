@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.Id;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Movie implements java.io.Serializable{
 
@@ -51,11 +52,20 @@ public class Movie implements java.io.Serializable{
         timetable.add(new Days("Joi"));
         timetable.add(new Days("Vineri"));
 
-
-
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(Titlu, movie.Titlu);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(Titlu);
+    }
 
     public String getTitlu() {
         return Titlu;
