@@ -12,7 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -154,18 +157,10 @@ public class SeeMovieListController {
     }
 
     public void deleteButtonClicked(){
-        if(!ReservationService.isEmpty()){
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("There are still reservations available. You\n cannot delete a movie yet!");
-            a.show();
-        }
-            else{
-            MovieService.findAndRemove(movie);
-            MovieService.emptyMovieData();
-            sw = true;
-            initialize();
-        }
-
+        MovieService.findAndRemove(movie);
+        MovieService.emptyMovieData();
+        sw = true;
+        initialize();
     }
 
     public void editButtonClicked() throws IOException {
