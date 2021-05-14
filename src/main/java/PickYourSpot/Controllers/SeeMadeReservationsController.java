@@ -120,5 +120,17 @@ public class SeeMadeReservationsController {
         }
     }
 
+    public void clearReservationsButtonClicked(){
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Are you sure you want to clear all the reservations made?");
+        Optional<ButtonType> result = a.showAndWait();
+        if (result.get() == ButtonType.OK ) {
+            LocuriService.empty();
+            ReservationService.emptycol();
+            ReservationService.getReservationData().removeAll(ReservationService.getReservationData()) ;
+            ReservationService.populate();
+            initialize();
+        }
+    }
 
 }
