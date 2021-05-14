@@ -54,6 +54,14 @@ public class TimetableController {
         return j;
     }
 
+    public static void setI(int i) {
+        TimetableController.i = i;
+    }
+
+    public static void setJ(int j) {
+        TimetableController.j = j;
+    }
+
     @FXML
     public void initialize(){
         Movie movie = SeeMovieListController.getMovie();
