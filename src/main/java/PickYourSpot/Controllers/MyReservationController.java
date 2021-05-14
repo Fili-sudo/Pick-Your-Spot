@@ -3,6 +3,7 @@ package PickYourSpot.Controllers;
 import PickYourSpot.Main;
 import PickYourSpot.Model.Movie;
 import PickYourSpot.Model.Reservation;
+import PickYourSpot.services.LocuriService;
 import PickYourSpot.services.MovieService;
 import PickYourSpot.services.ReservationService;
 import javafx.fxml.FXML;
@@ -103,6 +104,7 @@ public class MyReservationController {
             a.setContentText("Are you sure you want to cancel your reservation?");
             Optional<ButtonType> result = a.showAndWait();
             if (result.get() == ButtonType.OK ) {
+                LocuriService.freeSeats(reservation);
                 ReservationService.find(reservation);
                 ReservationService.populate(RegistrationController.getUsername());
                 initialize();

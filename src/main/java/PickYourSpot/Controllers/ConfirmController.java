@@ -109,7 +109,7 @@ public class ConfirmController {
                 , SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getOra()
                 ,SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getMinut()
                 ,SeeMovieListController.getMovie().getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getSala());
-        LocuriService.addLocuri(locuri);
+        LocuriService.addLocuri(locuri, SeeMovieListController.getMovie());
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SeeMovieList.fxml")));
         Main.getWindow().setScene(new Scene(root, 600, 400));
