@@ -25,6 +25,14 @@ public class Main extends Application {
         return scene;
     }
 
+    public static void setScene(Scene scene) {
+        Main.scene = scene;
+    }
+
+    public static void setWindow(Stage window) {
+        Main.window = window;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

@@ -19,7 +19,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#staffButtonClicked" prefHeight="31.0" prefWidth="64.0" text="Staff" />
             <Region prefHeight="100.0" prefWidth="51.0" />
-            <Button mnemonicParsing="false" onAction="#adminButtonClicked" prefHeight="31.0" prefWidth="64.0" text="Admin" />
+            <Button mnemonicParsing="false" onAction="#adminButtonClicked" id="adminButton" prefHeight="31.0" prefWidth="64.0" text="Admin" />
          </children>
       </HBox>
    </children>
