@@ -23,44 +23,44 @@
                         <Label text="Durata" GridPane.rowIndex="4" />
                         <Label text="People" GridPane.rowIndex="5" />
                         <Label text="Rating" GridPane.rowIndex="6" />
-                        <TextField fx:id="TitluField" GridPane.columnIndex="1">
+                        <TextField fx:id="TitluField" id="TitluField" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="DirectorField" layoutX="295.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="DirectorField" id="DirectorField" layoutX="295.0" layoutY="13.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="AnAparitieField" layoutX="295.0" layoutY="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="AnAparitieField" id="AnAparitieField" layoutX="295.0" layoutY="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="GenField" layoutX="295.0" layoutY="87.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="GenField" id="GenField" layoutX="295.0" layoutY="87.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="DurataField" layoutX="295.0" layoutY="124.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField fx:id="DurataField" id="DurataField" layoutX="295.0" layoutY="124.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="PeopleField" layoutX="295.0" layoutY="161.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <TextField fx:id="PeopleField" id="PeopleField" layoutX="295.0" layoutY="161.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="RatingField" layoutX="295.0" layoutY="198.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <TextField fx:id="RatingField" id="RatingField" layoutX="295.0" layoutY="198.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </TextField>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#okButtonClicked" prefHeight="31.0" prefWidth="77.0" text="OK">
+                              <Button mnemonicParsing="false" onAction="#okButtonClicked" id="okAdd" prefHeight="31.0" prefWidth="77.0" text="OK">
                                  <HBox.margin>
                                     <Insets left="300.0" />
                                  </HBox.margin>

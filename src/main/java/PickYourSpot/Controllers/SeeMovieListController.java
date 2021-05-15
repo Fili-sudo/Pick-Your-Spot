@@ -92,7 +92,6 @@ public class SeeMovieListController {
         }
         TitluColumn.setCellValueFactory(cellData -> cellData.getValue().titlupProperty());
         if(sw){
-            // de sters cand cipri face butoanele
             MovieService.populate();
             sw=false;
         }
