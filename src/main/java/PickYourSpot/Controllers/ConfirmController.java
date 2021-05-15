@@ -35,9 +35,6 @@ public class ConfirmController {
 
     @FXML
     public void initialize(){
-        Document doc = Document.createDocument("name", "Eusebiu").put("data", SeeMovieListController.getMovie());
-        Movie mov = doc.get("data",Movie.class);
-        System.out.println(mov.getTimetable().get(0).getProgram().get(0).getOra());
         int []row;
         int []column;
         String ora;

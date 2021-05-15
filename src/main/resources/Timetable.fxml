@@ -38,7 +38,7 @@
                         <Hyperlink fx:id="h11" onAction="#h11Clicked" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <Hyperlink fx:id="h12" onAction="#h12Clicked" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <Hyperlink fx:id="h13" onAction="#h13Clicked" text="Hyperlink" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Hyperlink fx:id="h21" onAction="#h21Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Hyperlink fx:id="h21" id="h21" onAction="#h21Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <Hyperlink fx:id="h22" onAction="#h22Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <Hyperlink fx:id="h23" onAction="#h23Clicked" text="Hyperlink" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                         <Hyperlink fx:id="h31" onAction="#h31Clicked" text="Hyperlink" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />

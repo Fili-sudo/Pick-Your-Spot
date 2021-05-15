@@ -40,7 +40,6 @@ public class TheatreController {
         seats.getItems().addAll(1,2,3,4,5);
         Movie movie = SeeMovieListController.getMovie();
         LocuriService.findByMovie(movie);
-        movie.getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).forExample();
         int [][] a = movie.getTimetable().get(TimetableController.getJ()).getProgram().get(TimetableController.getI()-1).getSala();
         for (int i=0;i<5;i++){
             for (int j=0;j<8;j++){

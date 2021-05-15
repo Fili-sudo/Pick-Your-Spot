@@ -26,14 +26,14 @@
             <Label text="Day:" GridPane.rowIndex="1" />
             <Label text="Time:" GridPane.rowIndex="2" />
             <Label text="Selected seats:" GridPane.rowIndex="3" />
-            <Text fx:id="day" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text fx:id="seats" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text fx:id="movie" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" />
+            <Text fx:id="day" id="day" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="time" id="time" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text fx:id="seats" id="seats" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="movie" id="movie" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <Button layoutX="38.0" layoutY="338.0" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Cancel" />
-      <Button layoutX="504.0" layoutY="338.0" mnemonicParsing="false" onAction="#confirmButtonClicked" text="Confirm" />
+      <Button layoutX="504.0" layoutY="338.0" mnemonicParsing="false" id = "confirmReservation" onAction="#confirmButtonClicked" text="Confirm" />
       <HBox layoutX="38.0" layoutY="14.0" prefHeight="100.0" prefWidth="370.0">
          <children>
             <Label text="Your reservation number:">
