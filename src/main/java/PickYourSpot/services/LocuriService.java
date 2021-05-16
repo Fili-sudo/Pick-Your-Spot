@@ -12,6 +12,9 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.filters.Filters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static PickYourSpot.services.FileSystemService.getPathToFile;
 
 public class LocuriService {
@@ -20,6 +23,7 @@ public class LocuriService {
 
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("locuri-database.db").toFile())
                 .openOrCreate("test", "test");
@@ -27,6 +31,17 @@ public class LocuriService {
         collection = database.getCollection("locuri");
     }
 
+    public static List<Locuri> getAllLocuri(){
+        List<Locuri> list = new ArrayList<>();
+        Cursor cursor = collection.find();
+        for (Document doc : cursor) {
+            Locuri loc = new Locuri(doc.get("movieTitle", String.class), doc.get("weekDay", String.class)
+                    , doc.get("ora", Integer.class), doc.get("minut", Integer.class)
+                    , doc.get("sala", int[][].class));
+            list.add(loc);
+        }
+        return list;
+    }
     public static void addLocuri(Locuri locuri, Movie movie){
         boolean sw = false;
         Cursor cursor = collection.find();

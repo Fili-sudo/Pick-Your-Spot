@@ -11,6 +11,9 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.filters.Filters;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static PickYourSpot.services.FileSystemService.getPathToFile;
 
 public class ReservationService {
@@ -23,6 +26,7 @@ public class ReservationService {
     }
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("reservation-database.db").toFile())
                 .openOrCreate("test", "test");
@@ -30,6 +34,18 @@ public class ReservationService {
         collection = database.getCollection("rezervari");
     }
 
+    public static List<Reservation> getAllReservations(){
+        List<Reservation> list = new ArrayList<>();
+        Cursor cursor = collection.find();
+        for (Document doc : cursor) {
+            Reservation res = new Reservation(doc.get("user", String.class), doc.get("movieTitle", String.class)
+                    , doc.get("seats", String.class), doc.get("weekDay", String.class), doc.get("time", String.class)
+                    , doc.get("status", String.class), doc.get("row", int[].class), doc.get("column", int[].class)
+                    , doc.get("res_no", Integer.class));
+            list.add(res);
+        }
+        return list;
+    }
     public static void addReservation(Reservation reservation){
         Document doc = Document.createDocument("movieTitle", reservation.getMovieTitle())
                 .put("user", reservation.getUser())

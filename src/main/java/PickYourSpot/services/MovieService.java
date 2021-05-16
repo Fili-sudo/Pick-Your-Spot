@@ -11,6 +11,7 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.filters.Filters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static PickYourSpot.services.FileSystemService.getPathToFile;
@@ -25,11 +26,24 @@ public class MovieService {
     }
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("movie-database.db").toFile())
                 .openOrCreate("test", "test");
 
         collection = database.getCollection("filme");
+    }
+    public static List<Movie> getAllMovies(){
+        List<Movie> list = new ArrayList<>();
+        Cursor cursor = collection.find();
+        for (Document doc : cursor){
+            Movie mov = new Movie(doc.get("movieTitle", String.class), doc.get("anAparitie", Integer.class)
+                    , doc.get("director", String.class), doc.get("people", String.class), doc.get("rating", Double.class)
+                    , doc.get("gen", String.class), doc.get("durata", Integer.class));
+
+            list.add(mov);
+        }
+        return list;
     }
 
     public static void addMovie(Movie movie){

@@ -8,9 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -25,6 +25,14 @@ public class Main extends Application {
         return scene;
     }
 
+    public static void setScene(Scene scene) {
+        Main.scene = scene;
+    }
+
+    public static void setWindow(Stage window) {
+        Main.window = window;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -34,7 +42,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        initDirectory();
         UserService.initDatabase();
         ReservationService.initDatabase();
         MovieService.initDatabase();
@@ -55,11 +62,7 @@ public class Main extends Application {
 
 
 
-    private void initDirectory() {
-        Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
-        if (!Files.exists(applicationHomePath))
-            applicationHomePath.toFile().mkdirs();
-    }
+
 
 
 }

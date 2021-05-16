@@ -54,8 +54,8 @@
                         <Label fx:id="statusLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <Button layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Back" />
-                  <Button layoutX="238.0" layoutY="327.0" mnemonicParsing="false" onAction="#cancelReservationButtonClicked" text="Cancel &#10;Reservation" />
+                  <Button layoutX="14.0" layoutY="353.0" mnemonicParsing="false" id="backButton" onAction="#backButtonClicked" text="Back" />
+                  <Button layoutX="238.0" layoutY="327.0" mnemonicParsing="false" id="cancelReservationByUser" onAction="#cancelReservationButtonClicked" text="Cancel &#10;Reservation" />
                </children>
             </AnchorPane>
         </items>

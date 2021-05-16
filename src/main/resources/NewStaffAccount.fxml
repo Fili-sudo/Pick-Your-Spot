@@ -23,17 +23,17 @@
          <children>
             <Label text="Username:" />
             <Label text="Passworrd:" GridPane.rowIndex="1" />
-            <TextField fx:id="usernameField" prefHeight="31.0" prefWidth="181.0" promptText="username" GridPane.columnIndex="1" />
-            <TextField fx:id="passwordField" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="usernameField" id="usernameNewStaff" prefHeight="31.0" prefWidth="181.0" promptText="username" GridPane.columnIndex="1" />
+            <TextField fx:id="passwordField" id="passwordNewStaff" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Button mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="31.0" prefWidth="112.0" text="Back" />
                   <Region prefHeight="31.0" prefWidth="131.0" />
-                  <Button mnemonicParsing="false" onAction="#handleRegistration" prefHeight="31.0" prefWidth="120.0" text="Create" />
+                  <Button mnemonicParsing="false" id="createStaff" onAction="#handleRegistration" prefHeight="31.0" prefWidth="120.0" text="Create" />
                </children>
             </HBox>
          </children>
       </GridPane>
-      <Text fx:id="createMessage" layoutX="98.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="createMessage" id="createMessage"  layoutX="98.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>
