@@ -7,9 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
@@ -35,20 +34,24 @@ class SeeRequestedReservationsTest {
         return scene;
     }
 
-    @BeforeAll
-    static void beforeAll() {
-        FileSystemService.APPLICATION_FOLDER = ".test";
-        UserService.initDatabase();
-        ReservationService.initDatabase();
-        MovieService.initDatabase();
-        LocuriService.initDatabase();
+    @AfterEach
+    void tearDown() {
+        UserService.database.close();
+        MovieService.database.close();
+        ReservationService.database.close();
+        LocuriService.database.close();
     }
 
-    @BeforeEach
-    void setUp(FxRobot robot) {
-        UserService.empty();
-        MovieService.empty();
-        ReservationService.emptycol();
+
+    @Start
+    void start(Stage primaryStage) throws IOException {
+
+        FileSystemService.APPLICATION_FOLDER = ".testui";
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        UserService.initDatabase();
+        MovieService.initDatabase();
+        ReservationService.initDatabase();
+        LocuriService.initDatabase();
         ReservationService.addReservation(new Reservation("andrei", "Demolition Man", "23,24,25", "Marti","10:20", "pending",new int[]{3,3,3},new int[]{4,5,6}, 354376565));
         ReservationService.addReservation(new Reservation("mihai", "Tenet", "28,29", "Miercuri","14:20", "pending",new int[]{4,4},new int[]{1,2}, 656747389));
 
@@ -59,12 +62,6 @@ class SeeRequestedReservationsTest {
 
         } catch (UsernameAlreadyExistsException e) {
         }
-    }
-
-
-    @Start
-    void start(Stage primaryStage) throws IOException {
-
         window = primaryStage;
         Main.setWindow(window);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("firstpage.fxml")));
@@ -75,6 +72,7 @@ class SeeRequestedReservationsTest {
         primaryStage.show();
     }
 
+    @Disabled
     @Test
     void testSeeRequestedreservations(FxRobot robot) {
         robot.clickOn("#login");

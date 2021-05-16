@@ -1,26 +1,43 @@
 package PickYourSpot.services;
 
 
+import PickYourSpot.Model.Movie;
 import PickYourSpot.Model.User;
 import PickYourSpot.exceptions.UsernameAlreadyExistsException;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 class UserServiceTest {
-    @BeforeAll
-    static void beforeAll() {
-        FileSystemService.APPLICATION_FOLDER = ".test";
-        UserService.initDatabase();
-    }
 
     @BeforeEach
-    void setUp(){
+    void setUp() throws IOException {
+        FileSystemService.APPLICATION_FOLDER = ".test";
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        UserService.initDatabase();
+        MovieService.initDatabase();
+        ReservationService.initDatabase();
+        LocuriService.initDatabase();
         UserService.empty();
+        MovieService.empty();
+        ReservationService.emptycol();
+        LocuriService.empty();
+    }
+
+    @AfterEach
+    void tearDown() {
+        UserService.empty();
+        MovieService.empty();
+        ReservationService.emptycol();
+        LocuriService.empty();
+        UserService.database.close();
+        MovieService.database.close();
+        ReservationService.database.close();
+        LocuriService.database.close();
     }
 
     @Test

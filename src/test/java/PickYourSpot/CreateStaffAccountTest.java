@@ -6,9 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.assertions.api.Assertions;
@@ -34,27 +33,36 @@ class CreateStaffAccountTest {
         return scene;
     }
 
-    @BeforeAll
-    static void beforeAll() {
-        FileSystemService.APPLICATION_FOLDER = ".test";
-        UserService.initDatabase();
-        ReservationService.initDatabase();
-        MovieService.initDatabase();
-        LocuriService.initDatabase();
-    }
 
-    @BeforeEach
-    void setUp(){
+
+    @AfterEach
+    void tearDown() {
         UserService.empty();
-        try {
-            UserService.addUser("admin", "admin", "Admin");
-
-        } catch (UsernameAlreadyExistsException e) { }
+        MovieService.empty();
+        ReservationService.emptycol();
+        LocuriService.empty();
+        UserService.database.close();
+        MovieService.database.close();
+        ReservationService.database.close();
+        LocuriService.database.close();
     }
+
+
 
     @Start
     void start(Stage primaryStage) throws IOException {
 
+
+        FileSystemService.APPLICATION_FOLDER = ".testui";
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        UserService.initDatabase();
+        MovieService.initDatabase();
+        ReservationService.initDatabase();
+        LocuriService.initDatabase();
+        try {
+            UserService.addUser("admin", "admin", "Admin");
+
+        } catch (UsernameAlreadyExistsException e) { }
         window = primaryStage;
         Main.setWindow(window);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("firstpage.fxml")));

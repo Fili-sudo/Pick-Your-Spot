@@ -18,10 +18,11 @@ import static PickYourSpot.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
+    public static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("pick-database.db").toFile())
                 .openOrCreate("test", "test");
 

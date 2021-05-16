@@ -24,10 +24,11 @@ public class ReservationService {
     public static ObservableList<Reservation> getReservationData() {
         return reservationData;
     }
+    public static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("reservation-database.db").toFile())
                 .openOrCreate("test", "test");
 
