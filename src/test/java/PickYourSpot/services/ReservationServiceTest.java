@@ -3,29 +3,39 @@ package PickYourSpot.services;
 import PickYourSpot.Model.Movie;
 import PickYourSpot.Model.Reservation;
 import PickYourSpot.Model.User;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.*;
+
+import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReservationServiceTest {
-    @BeforeAll
-    static void beforeAll() {
-        FileSystemService.APPLICATION_FOLDER = ".test";
-        ReservationService.initDatabase();
-    }
-
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
+        FileSystemService.APPLICATION_FOLDER = ".test";
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        UserService.initDatabase();
+        MovieService.initDatabase();
+        ReservationService.initDatabase();
+        LocuriService.initDatabase();
+        UserService.empty();
+        MovieService.empty();
         ReservationService.emptycol();
+        LocuriService.empty();
     }
 
-    @Test
-    void testDatabaseIsInitialisedAndNoReservationIsPersisted() {
-        assertThat(ReservationService.getAllReservations()).isNotNull();
-        assertThat(ReservationService.getAllReservations()).isEmpty();
+    @AfterEach
+    void tearDown() {
+        UserService.empty();
+        MovieService.empty();
+        ReservationService.emptycol();
+        LocuriService.empty();
+        UserService.database.close();
+        MovieService.database.close();
+        ReservationService.database.close();
+        LocuriService.database.close();
     }
 
     @Test

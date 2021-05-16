@@ -24,10 +24,11 @@ public class MovieService {
     public static ObservableList<Movie> getMovieData() {
         return movieData;
     }
+    public static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("movie-database.db").toFile())
                 .openOrCreate("test", "test");
 

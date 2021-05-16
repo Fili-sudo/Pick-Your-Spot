@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
@@ -35,33 +36,32 @@ class EditMovieListTest {
         return scene;
     }
 
-    @BeforeAll
-    static void beforeAll() {
-        FileSystemService.APPLICATION_FOLDER = ".test";
-        UserService.initDatabase();
-        ReservationService.initDatabase();
-        MovieService.initDatabase();
-        LocuriService.initDatabase();
-    }
 
-    @BeforeEach
-    void setUp(FxRobot robot) {
-        UserService.empty();
-        MovieService.empty();
-        MovieService.addMovie(new Movie("Demolition Man", 1993, "Marco Brambilla", "Sylvester Stallone, Sandra Bullock",7.3, "Thriller", 110));
-        MovieService.addMovie(new Movie("One to Delete", 1993, "Marco Brambilla", "Sylvester Stallone, Sandra Bullock",7.3, "Thriller", 110));
 
-        try {
-            UserService.addUser("admin", "admin", "Admin");
-
-        } catch (UsernameAlreadyExistsException e) {
-        }
+    @AfterEach
+    void tearDown() {
+        UserService.database.close();
+        MovieService.database.close();
+        ReservationService.database.close();
+        LocuriService.database.close();
     }
 
 
     @Start
     void start(Stage primaryStage) throws IOException {
 
+        FileSystemService.APPLICATION_FOLDER = ".testui";
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        UserService.initDatabase();
+        MovieService.initDatabase();
+        ReservationService.initDatabase();
+        LocuriService.initDatabase();
+
+        try {
+            UserService.addUser("admin", "admin", "Admin");
+
+        } catch (UsernameAlreadyExistsException e) {
+        }
         window = primaryStage;
         Main.setWindow(window);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("firstpage.fxml")));
@@ -71,7 +71,6 @@ class EditMovieListTest {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
     @Test
     void testAdminAdd(FxRobot robot) {
 
@@ -85,7 +84,44 @@ class EditMovieListTest {
         robot.clickOn("#adminButton");
         robot.clickOn("#loginButton");
 
+       assertThat(MovieService.getAllMovies()).size().isEqualTo(0);
+
+        robot.clickOn("#new");
+        robot.clickOn("#TitluField");
+        robot.write("Demolition Man");
+        robot.clickOn("#DirectorField");
+        robot.write("Marco Brambilla");
+        robot.clickOn("#AnAparitieField");
+        robot.write("1993");
+        robot.clickOn("#GenField");
+        robot.write("Comedy, Horror, Mystery");
+        robot.clickOn("#DurataField");
+        robot.write("97");
+        robot.clickOn("#PeopleField");
+        robot.write("Sylvester Stallone, Sandra Bullock");
+        robot.clickOn("#RatingField");
+        robot.write("5.8");
+        robot.clickOn("#okAdd");
+
+        robot.clickOn("#new");
+        robot.clickOn("#TitluField");
+        robot.write("One to Delete");
+        robot.clickOn("#DirectorField");
+        robot.write("Marco Brambilla");
+        robot.clickOn("#AnAparitieField");
+        robot.write("1993");
+        robot.clickOn("#GenField");
+        robot.write("Comedy, Horror, Mystery");
+        robot.clickOn("#DurataField");
+        robot.write("97");
+        robot.clickOn("#PeopleField");
+        robot.write("Sylvester Stallone, Sandra Bullock");
+        robot.clickOn("#RatingField");
+        robot.write("5.8");
+        robot.clickOn("#okAdd");
+
         assertThat(MovieService.getAllMovies()).size().isEqualTo(2);
+
 
         //admin deletes One to Delete
         robot.clickOn("#movieView").clickOn("One to Delete");

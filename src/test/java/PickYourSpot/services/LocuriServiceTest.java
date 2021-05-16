@@ -5,9 +5,8 @@ import PickYourSpot.Model.Locuri;
 import PickYourSpot.Model.Movie;
 import PickYourSpot.Model.Reservation;
 import PickYourSpot.exceptions.UsernameAlreadyExistsException;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.*;
 
 import java.io.IOException;
 
@@ -17,17 +16,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class LocuriServiceTest {
 
 
-    @BeforeAll
-    static void beforeAll() {
+    @BeforeEach
+    void setUp() throws IOException {
         FileSystemService.APPLICATION_FOLDER = ".test";
+        FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
+        UserService.initDatabase();
+        MovieService.initDatabase();
+        ReservationService.initDatabase();
         LocuriService.initDatabase();
+        UserService.empty();
+        MovieService.empty();
+        ReservationService.emptycol();
+        LocuriService.empty();
         TimetableController.setI(1);
         TimetableController.setJ(0);
     }
 
-    @BeforeEach
-    void setUp() {
+    @AfterEach
+    void tearDown() {
+        UserService.empty();
+        MovieService.empty();
+        ReservationService.emptycol();
         LocuriService.empty();
+        UserService.database.close();
+        MovieService.database.close();
+        ReservationService.database.close();
+        LocuriService.database.close();
     }
 
     @Test

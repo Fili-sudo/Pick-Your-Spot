@@ -20,11 +20,11 @@ import static PickYourSpot.services.FileSystemService.getPathToFile;
 public class LocuriService {
 
     private static NitriteCollection collection;
-
+    public static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+         database = Nitrite.builder()
                 .filePath(getPathToFile("locuri-database.db").toFile())
                 .openOrCreate("test", "test");
 
